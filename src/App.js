@@ -3,12 +3,12 @@ import './App.css';
 import Alert from './components/Alert';
 import Navbar from './components/Navbar';
 import Textform from './components/Textform';
-// import About from './components/About';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route 
-// } from "react-router-dom"; 
+import About from './components/About';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route 
+} from "react-router-dom"; 
 
 
 function App() {  
@@ -44,7 +44,7 @@ function App() {
   }
   return (
    <>
-   {/* <Router> */}
+   <Router>
 {/* import from Navbar.js     */}
 <Navbar title='TextChanger' about='about' mode={mode} toggleMode={toggleMode}/> 
 {/* import from Navbar.js     */} 
@@ -56,16 +56,16 @@ function App() {
 
 {/* import from Textform.js     */} 
 <div className="container">
-        {/* <Switch> */}
-              {/* <Route exact path="/about"> */}
-              {/* <About/> */}
-              {/* </Route>  */}
-              {/* <Route exact path="/">  */}
+        <Switch>
+              <Route exact path="/about">
+              <About mode={mode}/>
+              </Route> 
+              <Route exact path="/"> 
               < Textform showAlert={showAlert} title='Enter your text below' mode={mode}/> 
-              {/* </Route> */}
-        {/* </Switch> */}
+              </Route>
+        </Switch>
 </div>   
-{/* </Router>  */}
+</Router> 
 </>
   );
 }
