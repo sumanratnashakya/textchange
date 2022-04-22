@@ -1,40 +1,23 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-export default function About() {
+export default function About(props) {
 
   //using useState for dark mode
-  const [darkModeStyle,setDarkModeStyle]  = useState({
-    color: 'black',
-    backgroundColor: 'white'
-  });
-
-  //using useState for dark mode button
-  const[btnText, setBtnText]= useState('Enable Dark Mode');
-
-  const toggleStyle = ()=>{
-    if(darkModeStyle.color === 'black'){
-      setDarkModeStyle({
-        color: 'white',
-        backgroundColor: 'black',
-        border: '1px solid white'
-      })
-      setBtnText('Enable Light Mode')
-    }else{
-      setDarkModeStyle({
-        color: 'black',
-        backgroundColor: 'white'
-      })
-      setBtnText('Enable Dark Mode')
-    }
-  }
-
-
+  // const [darkModeStyle,setDarkModeStyle]  = useState({
+  //   color: 'black',
+  //   backgroundColor: 'white'
+  // });
 
   //css in js 
     // let darkModeStyle = {
     //     color: 'white',
     //     backgroundColor: 'black'
     // }
+
+    let darkModeStyle = {
+       color: props.mode === 'dark'?'white':'black',
+       backgroundColor: props.mode === 'dark'? 'grey' : 'white',
+    }
 
   return (
     <div className="container" style={darkModeStyle}> {/*css in js */}
@@ -43,7 +26,7 @@ export default function About() {
   <div className="accordion-item">
     <h2 className="accordion-header" id="headingOne">
       <button className="accordion-button" type="button" style={darkModeStyle}  data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Accordion Item #1
+       About TextChanger
       </button>
     </h2>
     <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -55,7 +38,7 @@ export default function About() {
   <div className="accordion-item" >
     <h2 className="accordion-header" id="headingTwo">
       <button className="accordion-button collapsed" style={darkModeStyle}  type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Accordion Item #2
+        Contact Us
       </button>
     </h2>
     <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -67,7 +50,7 @@ export default function About() {
   <div className="accordion-item" >
     <h2 className="accordion-header" id="headingThree">
       <button className="accordion-button collapsed" style={darkModeStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Accordion Item #3
+        Team Members
       </button>
     </h2>
     <div id="collapseThree" className="accordion-collapse collapse" style={darkModeStyle} aria-labelledby="headingThree" data-bs-parent="#accordionExample">
@@ -77,9 +60,7 @@ export default function About() {
     </div>
   </div>
 </div>
-<div className="container">
-<button type="button" onClick={toggleStyle} className="btn btn-primary my-3 ">{btnText }</button>
-</div>
+
     </div>
   )
 }
